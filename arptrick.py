@@ -1,6 +1,8 @@
 '''
-Arp Poisoning in Python 3
-
+-----Arp Poisoning in Python 3-----
+Filename: arptrick.py
+Author: s33r
+Description:
 > acts as an effective internet blocker(DOS) without ip forwarding enabled 
 > can be used as a means of man in the middle attacks 
 
